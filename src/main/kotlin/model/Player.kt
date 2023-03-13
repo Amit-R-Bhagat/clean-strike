@@ -1,5 +1,8 @@
 package model
 
+import CONSECUTIVE_TURN_NOT_POCKETED_LIMIT
+import FOUL_LIMIT
+
 class Player(private val id: Int) {
     private var points: Int = 0
     private var fouls: Int = 0
@@ -33,7 +36,7 @@ class Player(private val id: Int) {
 
     private fun increaseFoul(): Int {
         fouls++
-        if(fouls > 2){
+        if(fouls >= FOUL_LIMIT){
             decreasePointByOne()
             fouls = 0
         }
@@ -42,7 +45,7 @@ class Player(private val id: Int) {
 
     private fun increaseConsecutiveTurnNotPocketed(): Int {
         consecutiveTurnsNotPocketed++
-        if(consecutiveTurnsNotPocketed > 2){
+        if(consecutiveTurnsNotPocketed >= CONSECUTIVE_TURN_NOT_POCKETED_LIMIT){
             decreasePointByOne()
             consecutiveTurnsNotPocketed = 0
         }
