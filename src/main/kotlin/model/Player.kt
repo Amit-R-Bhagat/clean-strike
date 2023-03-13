@@ -11,6 +11,16 @@ class Player(val id: Int) {
         return --points
     }
 
+    fun increasePoint(amount: Int): Int {
+        points += amount
+        return points
+    }
+
+    fun decreasePoint(amount: Int): Int {
+        points -= amount
+        return points
+    }
+
     fun getPoints(): Int{
         return points
     }
