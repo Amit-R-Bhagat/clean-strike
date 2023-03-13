@@ -94,6 +94,7 @@ class GameTest {
 
         game.play(OutcomeType.STRIKERSTRIKE)
         game.play(OutcomeType.STRIKERSTRIKE)
+        game.play(OutcomeType.STRIKE)
         game.play(OutcomeType.STRIKERSTRIKE)
 
         assertEquals(-4, player1.getPoints())

@@ -3,6 +3,7 @@ package model
 class Player(private val id: Int) {
     private var points: Int = 0
     private var fouls: Int = 0
+    private var consecutiveTurnsNotPocketed: Int = 0
 
     private fun increasePointByOne(): Int {
         return ++points
@@ -39,6 +40,15 @@ class Player(private val id: Int) {
         return fouls
     }
 
+    private fun increaseConsecutiveTurnNotPocketed(): Int {
+        consecutiveTurnsNotPocketed++
+        if(consecutiveTurnsNotPocketed > 2){
+            decreasePointByOne()
+            consecutiveTurnsNotPocketed = 0
+        }
+        return consecutiveTurnsNotPocketed
+    }
+
     fun update(outcome: OutcomeType){
         when(outcome){
             OutcomeType.STRIKE -> increasePointByOne()
@@ -47,12 +57,16 @@ class Player(private val id: Int) {
             OutcomeType.DEFUNCTCOIN -> {
                 decreasePoint(2)
                 increaseFoul()
+                increaseConsecutiveTurnNotPocketed()
             }
             OutcomeType.STRIKERSTRIKE -> {
                 decreasePointByOne()
                 increaseFoul()
+                increaseConsecutiveTurnNotPocketed()
             }
-            OutcomeType.NONE -> increaseFoul()
+            OutcomeType.NONE -> {
+                increaseConsecutiveTurnNotPocketed()
+            }
         }
     }
 }
