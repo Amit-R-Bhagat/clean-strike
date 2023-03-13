@@ -1,12 +1,14 @@
+import exception.NotEnoughCoinsException
 import model.Board
 import model.CoinType
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class BoardTest {
 
     @Test
-    fun `should create a carrom board with coins and striker`(){
+    fun `should create a carrom board with coins and striker`() {
         val numberOfBlackCoins = 9
         val numberOfRedCoins = 1
         val numberOfStrikers = 1
@@ -18,7 +20,7 @@ class BoardTest {
     }
 
     @Test
-    fun `should decrease black coin count by one on multiStrike`(){
+    fun `should decrease black coin count by one on multiStrike`() {
         val board = Board(9, 1, 1)
 
         board.strike()
@@ -27,7 +29,7 @@ class BoardTest {
     }
 
     @Test
-    fun `should decrease black coin count by two on multiStrike`(){
+    fun `should decrease black coin count by two on multiStrike`() {
         val board = Board(9, 1, 1)
 
         board.multiStrike()
@@ -36,7 +38,7 @@ class BoardTest {
     }
 
     @Test
-    fun `should decrease red coin count by one on redStrike`(){
+    fun `should decrease red coin count by one on redStrike`() {
         val board = Board(9, 1, 1)
 
         board.redStrike()
@@ -45,12 +47,20 @@ class BoardTest {
     }
 
     @Test
-    fun `should remove a coin from play on defunct coin`(){
+    fun `should remove a coin from play on defunct coin`() {
         val board = Board(9, 1, 1)
 
         board.defunctCoin(CoinType.BLACK)
 
         assertEquals(8, board.getNumberOfBlackCoins())
+    }
+
+    @Test
+    fun `should throw error if outcome cannot be played`() {
+        val board = Board(9, 1, 1)
+        board.redStrike()
+
+        assertFailsWith<NotEnoughCoinsException> { board.redStrike() }
     }
 
 }
