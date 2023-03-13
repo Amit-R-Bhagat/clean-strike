@@ -1,3 +1,3 @@
 package exception
 
-class NotEnoughCoinsException : Exception(message = "Not enough coins on the board.")
+class NotEnoughCoinsException : Exception("Not enough coins on the board.")

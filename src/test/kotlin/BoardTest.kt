@@ -9,9 +9,9 @@ class BoardTest {
     fun `should create a carrom board with coins and striker`(){
         val numberOfBlackCoins = 9
         val numberOfRedCoins = 1
+        val numberOfStrikers = 1
 
-
-        val board = Board(numberOfBlackCoins, numberOfRedCoins)
+        val board = Board(numberOfBlackCoins, numberOfRedCoins, numberOfStrikers)
 
         assertEquals(9, board.getNumberOfBlackCoins())
         assertEquals(1, board.getNumberOfRedCoins())
@@ -19,7 +19,7 @@ class BoardTest {
 
     @Test
     fun `should decrease black coin count by one on multiStrike`(){
-        val board = Board(9, 1)
+        val board = Board(9, 1, 1)
 
         board.strike()
 
@@ -28,7 +28,7 @@ class BoardTest {
 
     @Test
     fun `should decrease black coin count by two on multiStrike`(){
-        val board = Board(9, 1)
+        val board = Board(9, 1, 1)
 
         board.multiStrike()
 
@@ -37,7 +37,7 @@ class BoardTest {
 
     @Test
     fun `should decrease red coin count by one on redStrike`(){
-        val board = Board(9, 1)
+        val board = Board(9, 1, 1)
 
         board.redStrike()
 
@@ -46,10 +46,11 @@ class BoardTest {
 
     @Test
     fun `should remove a coin from play on defunct coin`(){
-        val board = Board(9, 1)
+        val board = Board(9, 1, 1)
 
         board.defunctCoin(CoinType.BLACK)
 
         assertEquals(8, board.getNumberOfBlackCoins())
     }
+
 }

@@ -2,7 +2,7 @@ package model
 
 import exception.NotEnoughCoinsException
 
-class Board(private var numberOfBlackCoins: Int, private var numberOfRedCoins: Int) {
+class Board(private var numberOfBlackCoins: Int, private var numberOfRedCoins: Int, private val numberOfStrikers: Int) {
 
     fun getNumberOfBlackCoins(): Int{
         return numberOfBlackCoins
