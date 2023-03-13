@@ -1,32 +1,34 @@
-package service
-
-import model.Board
-import model.CoinType
-import model.OutcomeType
-import model.Player
+package model
 
 class Game(private val board: Board, private val players: List<Player>) {
+    private var status = GameStatusType.INPROGRESS
 
     private var currPlayerIndex = 0
     fun play(outcome: OutcomeType) {
+        if (status != GameStatusType.INPROGRESS) return
+
         val currPlayer = players[currPlayerIndex]
-        when(outcome) {
+        when (outcome) {
             OutcomeType.STRIKE -> {
                 board.strike()
                 currPlayer.increasePointByOne()
             }
+
             OutcomeType.MULTISTRIKE -> {
                 board.multiStrike()
                 currPlayer.increasePoint(2)
             }
+
             OutcomeType.REDSTRIKE -> {
                 board.redStrike()
                 currPlayer.increasePoint(3)
             }
+
             OutcomeType.STRIKERSTRIKE -> {
                 currPlayer.decreasePointByOne()
                 currPlayer.increaseFoul()
             }
+
             OutcomeType.DEFUNCTCOIN -> {
                 board.defunctCoin(CoinType.BLACK)
                 currPlayer.decreasePoint(2)
@@ -34,28 +36,31 @@ class Game(private val board: Board, private val players: List<Player>) {
             }
         }
 
-        foulLimitCheck(currPlayer)
-        gameConclusionCheck()
+        checkIfFoulLimitExceeded(currPlayer)
+        changeStatusIfConcluded()
 
-        currPlayerIndex = (currPlayerIndex + 1)%players.size
+        currPlayerIndex = (currPlayerIndex + 1) % players.size
     }
 
-    private fun gameConclusionCheck() {
-        var maxPointPlayer = players.maxWith(Comparator.comparingInt{it.getPoints()})
-        var maxPoint = maxPointPlayer.getPoints()
-        var minPoint = players.minWith(Comparator.comparingInt{it.getPoints()}).getPoints()
+    private fun changeStatusIfConcluded() {
+        val maxPoint = players.maxWith(Comparator.comparingInt { it.getPoints() }).getPoints()
+        val minPoint = players.minWith(Comparator.comparingInt { it.getPoints() }).getPoints()
 
-        if(maxPoint >= 5 && maxPoint-minPoint >= 3){
-            println("Game won by player ${maxPointPlayer.getId()}")
-        }else if(board.getNumberOfBlackCoins() == 0 && board.getNumberOfRedCoins() == 0){
-            println("Game is draw")
+        if (maxPoint >= 5 && maxPoint - minPoint >= 3) {
+            status = GameStatusType.WON
+        } else if (board.getNumberOfBlackCoins() == 0 && board.getNumberOfRedCoins() == 0) {
+            status = GameStatusType.DRAW
         }
     }
 
-    private fun foulLimitCheck(currPlayer: Player) {
+    private fun checkIfFoulLimitExceeded(currPlayer: Player) {
         if (currPlayer.getFouls() == 3) {
             currPlayer.decreasePointByOne()
-            currPlayer.setFoul(0)
+            currPlayer.resetNumberOfFoulToZero()
         }
+    }
+
+    fun getStatus(): GameStatusType {
+        return status
     }
 }

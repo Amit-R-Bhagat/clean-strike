@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f4105c40-ea3d-49a6-a435-63a04ea41218" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/Board.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/CoinType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/CoinType.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/Game.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/GameStatusType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/GameStatusType.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/Player.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/BoardTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/BoardTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Kotlin Class" />
         <option value="Kotlin Enum" />
       </list>
     </option>
@@ -67,11 +68,14 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="model" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="service" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.BoardServiceTest">
+  <component name="RunManager" selected="Gradle.BoardTest.should throw error if outcome cannot be played">
     <configuration name="BoardServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -95,7 +99,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="BoardServiceTest.player loses a point after three fouls" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="BoardTest.should throw error if outcome cannot be played" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -108,7 +112,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;service.BoardServiceTest.player loses a point after three fouls&quot;" />
+            <option value="&quot;BoardTest.should throw error if outcome cannot be played&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -118,7 +122,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="BoardServiceTest.player points should decrease by one on strikerStrike" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GameTest.game is draw if no player has atleast five points and lead by atleast three points to any other player and no coins" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -131,7 +135,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;service.BoardServiceTest.player points should decrease by one on strikerStrike&quot;" />
+            <option value="&quot;service.GameTest.game is draw if no player has atleast five points and lead by atleast three points to any other player and no coins&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -141,7 +145,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="BoardServiceTest.player points should decrease by two on defunctCoin" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GameTest.game is won if a player has atleast five points and lead by atleast three points to any other player" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -154,7 +158,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;service.BoardServiceTest.player points should decrease by two on defunctCoin&quot;" />
+            <option value="&quot;service.GameTest.game is won if a player has atleast five points and lead by atleast three points to any other player&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -164,7 +168,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PlayerTest.should increase fouls of player by one" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'CleanStrike.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -176,8 +180,6 @@
         <option name="taskNames">
           <list>
             <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;PlayerTest.should increase fouls of player by one&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -189,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.BoardTest.should throw error if outcome cannot be played" />
+        <item itemvalue="Gradle.Tests in 'CleanStrike.test'" />
+        <item itemvalue="Gradle.GameTest.game is draw if no player has atleast five points and lead by atleast three points to any other player and no coins" />
+        <item itemvalue="Gradle.GameTest.game is won if a player has atleast five points and lead by atleast three points to any other player" />
         <item itemvalue="Gradle.BoardServiceTest" />
-        <item itemvalue="Gradle.BoardServiceTest.player loses a point after three fouls" />
-        <item itemvalue="Gradle.BoardServiceTest.player points should decrease by two on defunctCoin" />
-        <item itemvalue="Gradle.BoardServiceTest.player points should decrease by one on strikerStrike" />
-        <item itemvalue="Gradle.PlayerTest.should increase fouls of player by one" />
       </list>
     </recent_temporary>
   </component>
@@ -207,5 +209,8 @@
       <updated>1678441355066</updated>
     </task>
     <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CleanStrike$Tests_in__CleanStrike_test_.ic" NAME="Tests in 'CleanStrike.test' Coverage Results" MODIFIED="1678696521236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

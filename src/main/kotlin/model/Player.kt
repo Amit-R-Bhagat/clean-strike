@@ -8,7 +8,7 @@ class Player(private val id: Int) {
         return ++points
     }
 
-    fun decreasePointByOne(): Int{
+    fun decreasePointByOne(): Int {
         return --points
     }
 
@@ -22,20 +22,20 @@ class Player(private val id: Int) {
         return points
     }
 
-    fun getPoints(): Int{
+    fun getPoints(): Int {
         return points
     }
 
-    fun getFouls(): Int{
+    fun getFouls(): Int {
         return fouls
     }
 
-    fun increaseFoul(): Int{
+    fun increaseFoul(): Int {
         return ++fouls
     }
 
-    fun setFoul(value: Int): Int{
-        fouls = value
+    fun resetNumberOfFoulToZero(): Int {
+        fouls = 0
         return fouls
     }
 }
