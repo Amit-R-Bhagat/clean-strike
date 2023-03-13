@@ -1,6 +1,6 @@
 package model
 
-class Player(val id: Int) {
+class Player(private val id: Int) {
     private var points: Int = 0
     private var fouls: Int = 0
 

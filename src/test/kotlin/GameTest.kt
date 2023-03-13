@@ -1,12 +1,10 @@
 package service
 
-import model.Board
-import model.OutcomeType
-import model.Player
+import model.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-class BoardServiceTest {
+class GameTest {
 
     @Test
     fun `should play with turn of player1`() {
@@ -14,9 +12,9 @@ class BoardServiceTest {
         val player1 = Player(1)
         val player2 = Player(2)
         val players = listOf(player1, player2)
-        val boardService = BoardService(board, players)
+        val game = Game(board, players)
 
-        boardService.play(OutcomeType.STRIKE)
+        game.play(OutcomeType.STRIKE)
 
         assertEquals(1, player1.getPoints())
     }
@@ -27,10 +25,10 @@ class BoardServiceTest {
         val player1 = Player(1)
         val player2 = Player(2)
         val players = listOf(player1, player2)
-        val boardService = BoardService(board, players)
-        boardService.play(OutcomeType.STRIKE)
+        val game = Game(board, players)
+        game.play(OutcomeType.STRIKE)
 
-        boardService.play(OutcomeType.STRIKE)
+        game.play(OutcomeType.STRIKE)
 
         assertEquals(1, player2.getPoints())
     }
@@ -41,9 +39,9 @@ class BoardServiceTest {
         val player1 = Player(1)
         val player2 = Player(2)
         val players = listOf(player1, player2)
-        val boardService = BoardService(board, players)
+        val game = Game(board, players)
 
-        boardService.play(OutcomeType.MULTISTRIKE)
+        game.play(OutcomeType.MULTISTRIKE)
 
         assertEquals(2, player1.getPoints())
     }
@@ -54,9 +52,9 @@ class BoardServiceTest {
         val player1 = Player(1)
         val player2 = Player(2)
         val players = listOf(player1, player2)
-        val boardService = BoardService(board, players)
+        val game = Game(board, players)
 
-        boardService.play(OutcomeType.REDSTRIKE)
+        game.play(OutcomeType.REDSTRIKE)
 
         assertEquals(3, player1.getPoints())
     }
@@ -67,9 +65,9 @@ class BoardServiceTest {
         val player1 = Player(1)
         val player2 = Player(2)
         val players = listOf(player1, player2)
-        val boardService = BoardService(board, players)
+        val game = Game(board, players)
 
-        boardService.play(OutcomeType.STRIKERSTRIKE)
+        game.play(OutcomeType.STRIKERSTRIKE)
 
         assertEquals(-1, player1.getPoints())
     }
@@ -80,9 +78,9 @@ class BoardServiceTest {
         val player1 = Player(1)
         val player2 = Player(2)
         val players = listOf(player1, player2)
-        val boardService = BoardService(board, players)
+        val game = Game(board, players)
 
-        boardService.play(OutcomeType.DEFUNCTCOIN)
+        game.play(OutcomeType.DEFUNCTCOIN)
 
         assertEquals(-2, player1.getPoints())
     }
@@ -92,12 +90,41 @@ class BoardServiceTest {
         val board = Board(9,1,1)
         val player1 = Player(1)
         val players = listOf(player1)
-        val boardService = BoardService(board, players)
+        val game = Game(board, players)
 
-        boardService.play(OutcomeType.STRIKERSTRIKE)
-        boardService.play(OutcomeType.STRIKERSTRIKE)
-        boardService.play(OutcomeType.STRIKERSTRIKE)
+        game.play(OutcomeType.STRIKERSTRIKE)
+        game.play(OutcomeType.STRIKERSTRIKE)
+        game.play(OutcomeType.STRIKERSTRIKE)
 
         assertEquals(-4, player1.getPoints())
+    }
+
+    @Test
+    fun `game is won if a player has atleast five points and lead by atleast three points to any other player`() {
+        val board = Board(9,2,1)
+        val player1 = Player(1)
+        val player2 = Player(2)
+        val players = listOf(player1, player2)
+        val game = Game(board, players)
+
+        game.play(OutcomeType.REDSTRIKE)
+        game.play(OutcomeType.STRIKE)
+        game.play(OutcomeType.REDSTRIKE)
+
+        assertEquals(GameStatusType.WON, game.getStatus())
+    }
+
+    @Test
+    fun `game is draw if no player has atleast five points and lead by atleast three points to any other player and no coins`() {
+        val board = Board(1,1,1)
+        val player1 = Player(1)
+        val player2 = Player(2)
+        val players = listOf(player1, player2)
+        val game = Game(board, players)
+
+        game.play(OutcomeType.REDSTRIKE)
+        game.play(OutcomeType.STRIKE)
+
+        assertEquals(GameStatusType.DRAW, game.getStatus())
     }
 }

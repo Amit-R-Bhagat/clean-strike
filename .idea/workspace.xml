@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4105c40-ea3d-49a6-a435-63a04ea41218" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/model/OutcomeType.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/Board.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/CoinType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/CoinType.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/Player.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +71,30 @@
       <recent name="service" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.BoardServiceTest.player loses a point after three fouls">
+  <component name="RunManager" selected="Gradle.BoardServiceTest">
+    <configuration name="BoardServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;service.BoardServiceTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="BoardServiceTest.player loses a point after three fouls" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -139,29 +164,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="BoardServiceTest.player points should increase by three on redStrike" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;service.BoardServiceTest.player points should increase by three on redStrike&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="PlayerTest.should increase fouls of player by one" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -187,11 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.BoardServiceTest" />
         <item itemvalue="Gradle.BoardServiceTest.player loses a point after three fouls" />
         <item itemvalue="Gradle.BoardServiceTest.player points should decrease by two on defunctCoin" />
         <item itemvalue="Gradle.BoardServiceTest.player points should decrease by one on strikerStrike" />
         <item itemvalue="Gradle.PlayerTest.should increase fouls of player by one" />
-        <item itemvalue="Gradle.BoardServiceTest.player points should increase by three on redStrike" />
       </list>
     </recent_temporary>
   </component>
