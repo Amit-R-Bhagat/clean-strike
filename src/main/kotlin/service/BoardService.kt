@@ -2,31 +2,32 @@ package service
 
 import model.Board
 import model.CoinType
+import model.OutcomeType
 import model.Player
 
 class BoardService(private val board: Board, private val players: List<Player>) {
 
     private var currPlayerIndex = 0
-    fun play(outcome: Int) {
+    fun play(outcome: OutcomeType) {
         val currPlayer = players[currPlayerIndex]
         when(outcome) {
-            1 -> {
+            OutcomeType.STRIKE -> {
                 board.strike()
                 currPlayer.increasePointByOne()
             }
-            2 -> {
+            OutcomeType.MULTISTRIKE -> {
                 board.multiStrike()
                 currPlayer.increasePoint(2)
             }
-            3 -> {
+            OutcomeType.REDSTRIKE -> {
                 board.redStrike()
                 currPlayer.increasePoint(3)
             }
-            4 -> {
+            OutcomeType.STRIKERSTRIKE -> {
                 currPlayer.decreasePointByOne()
                 currPlayer.increaseFoul()
             }
-            5 -> {
+            OutcomeType.DEFUNCTCOIN -> {
                 board.defunctCoin(CoinType.BLACK)
                 currPlayer.decreasePoint(2)
                 currPlayer.increaseFoul()

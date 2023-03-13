@@ -1,6 +1,7 @@
 package service
 
 import model.Board
+import model.OutcomeType
 import model.Player
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -15,7 +16,7 @@ class BoardServiceTest {
         val players = listOf(player1, player2)
         val boardService = BoardService(board, players)
 
-        boardService.play(1)
+        boardService.play(OutcomeType.STRIKE)
 
         assertEquals(1, player1.getPoints())
     }
@@ -27,9 +28,9 @@ class BoardServiceTest {
         val player2 = Player(2)
         val players = listOf(player1, player2)
         val boardService = BoardService(board, players)
-        boardService.play(1)
+        boardService.play(OutcomeType.STRIKE)
 
-        boardService.play(1)
+        boardService.play(OutcomeType.STRIKE)
 
         assertEquals(1, player2.getPoints())
     }
@@ -42,7 +43,7 @@ class BoardServiceTest {
         val players = listOf(player1, player2)
         val boardService = BoardService(board, players)
 
-        boardService.play(2)
+        boardService.play(OutcomeType.MULTISTRIKE)
 
         assertEquals(2, player1.getPoints())
     }
@@ -55,7 +56,7 @@ class BoardServiceTest {
         val players = listOf(player1, player2)
         val boardService = BoardService(board, players)
 
-        boardService.play(3)
+        boardService.play(OutcomeType.REDSTRIKE)
 
         assertEquals(3, player1.getPoints())
     }
@@ -68,7 +69,7 @@ class BoardServiceTest {
         val players = listOf(player1, player2)
         val boardService = BoardService(board, players)
 
-        boardService.play(4)
+        boardService.play(OutcomeType.STRIKERSTRIKE)
 
         assertEquals(-1, player1.getPoints())
     }
@@ -81,7 +82,7 @@ class BoardServiceTest {
         val players = listOf(player1, player2)
         val boardService = BoardService(board, players)
 
-        boardService.play(5)
+        boardService.play(OutcomeType.DEFUNCTCOIN)
 
         assertEquals(-2, player1.getPoints())
     }
@@ -93,9 +94,9 @@ class BoardServiceTest {
         val players = listOf(player1)
         val boardService = BoardService(board, players)
 
-        boardService.play(4)
-        boardService.play(4)
-        boardService.play(4)
+        boardService.play(OutcomeType.STRIKERSTRIKE)
+        boardService.play(OutcomeType.STRIKERSTRIKE)
+        boardService.play(OutcomeType.STRIKERSTRIKE)
 
         assertEquals(-4, player1.getPoints())
     }
