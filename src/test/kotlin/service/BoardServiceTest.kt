@@ -59,4 +59,44 @@ class BoardServiceTest {
 
         assertEquals(3, player1.getPoints())
     }
+
+    @Test
+    fun `player points should decrease by one on strikerStrike`() {
+        val board = Board(9,1,1)
+        val player1 = Player(1)
+        val player2 = Player(2)
+        val players = listOf(player1, player2)
+        val boardService = BoardService(board, players)
+
+        boardService.play(4)
+
+        assertEquals(-1, player1.getPoints())
+    }
+
+    @Test
+    fun `player points should decrease by two on defunctCoin`() {
+        val board = Board(9,1,1)
+        val player1 = Player(1)
+        val player2 = Player(2)
+        val players = listOf(player1, player2)
+        val boardService = BoardService(board, players)
+
+        boardService.play(5)
+
+        assertEquals(-2, player1.getPoints())
+    }
+
+    @Test
+    fun `player loses a point after three fouls`() {
+        val board = Board(9,1,1)
+        val player1 = Player(1)
+        val players = listOf(player1)
+        val boardService = BoardService(board, players)
+
+        boardService.play(4)
+        boardService.play(4)
+        boardService.play(4)
+
+        assertEquals(-4, player1.getPoints())
+    }
 }

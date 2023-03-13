@@ -39,4 +39,13 @@ class PlayerTest {
 
         assertEquals(-3, player.getPoints())
     }
+
+    @Test
+    fun `should increase fouls of player by one`() {
+        val player = Player(1)
+
+        player.increaseFoul()
+
+        assertEquals(1, player.getFouls())
+    }
 }
