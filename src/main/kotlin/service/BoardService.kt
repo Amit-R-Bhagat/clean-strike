@@ -12,6 +12,14 @@ class BoardService(private val board: Board, private val players: List<Player>) 
                 board.strike()
                 players[currPlayerIndex].increasePointByOne()
             }
+            2 -> {
+                board.multiStrike()
+                players[currPlayerIndex].increasePoint(2)
+            }
+            3 -> {
+                board.redStrike()
+                players[currPlayerIndex].increasePoint(3)
+            }
         }
 
         currPlayerIndex = (currPlayerIndex + 1)%players.size
