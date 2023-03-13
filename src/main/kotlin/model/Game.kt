@@ -7,9 +7,8 @@ class Game(private val board: Board, private val players: List<Player>) {
     fun play(outcome: OutcomeType) {
         if (status != GameStatusType.INPROGRESS) return
 
-        val currPlayer = players[currPlayerIndex]
         board.update(outcome)
-        currPlayer.update(outcome)
+        players[currPlayerIndex].update(outcome)
 
         changeStatusIfConcluded()
 

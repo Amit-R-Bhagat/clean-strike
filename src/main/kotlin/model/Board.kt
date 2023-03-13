@@ -4,7 +4,7 @@ import exception.NotEnoughCoinsException
 
 class Board(private var numberOfBlackCoins: Int, private var numberOfRedCoins: Int, private val numberOfStrikers: Int) {
 
-    fun getNumberOfBlackCoins(): Int{
+    fun getNumberOfBlackCoins(): Int {
         return numberOfBlackCoins
     }
 
@@ -13,36 +13,31 @@ class Board(private var numberOfBlackCoins: Int, private var numberOfRedCoins: I
     }
 
     private fun strike() {
-        if(numberOfBlackCoins==0) throw NotEnoughCoinsException()
+        if (numberOfBlackCoins == 0) throw NotEnoughCoinsException()
         numberOfBlackCoins -= 1
     }
 
     private fun multiStrike() {
-        if(numberOfBlackCoins==0) throw NotEnoughCoinsException()
+        if (numberOfBlackCoins == 0) throw NotEnoughCoinsException()
         numberOfBlackCoins -= 2
     }
 
     private fun redStrike() {
-        if(numberOfRedCoins==0) throw NotEnoughCoinsException()
+        if (numberOfRedCoins == 0) throw NotEnoughCoinsException()
         numberOfRedCoins -= 1
     }
 
-    private fun defunctCoin(coinType: CoinType) {
-        if(coinType == CoinType.BLACK){
-            if(numberOfBlackCoins==0) throw NotEnoughCoinsException()
-            numberOfBlackCoins -= 1
-        }else {
-            if(numberOfRedCoins==0) throw NotEnoughCoinsException()
-            numberOfRedCoins -= 1
-        }
+    private fun defunctCoin() {
+        if (numberOfBlackCoins == 0) throw NotEnoughCoinsException()
+        numberOfBlackCoins -= 1
     }
 
-    fun update(outcome: OutcomeType){
-        when(outcome){
+    fun update(outcome: OutcomeType) {
+        when (outcome) {
             OutcomeType.STRIKE -> strike()
             OutcomeType.MULTISTRIKE -> multiStrike()
             OutcomeType.REDSTRIKE -> redStrike()
-            OutcomeType.DEFUNCTCOIN -> defunctCoin(CoinType.BLACK)
+            OutcomeType.DEFUNCTCOIN -> defunctCoin()
             else -> {}
         }
     }
