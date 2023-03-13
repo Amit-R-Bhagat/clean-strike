@@ -8,35 +8,9 @@ class Game(private val board: Board, private val players: List<Player>) {
         if (status != GameStatusType.INPROGRESS) return
 
         val currPlayer = players[currPlayerIndex]
-        when (outcome) {
-            OutcomeType.STRIKE -> {
-                board.strike()
-                currPlayer.increasePointByOne()
-            }
+        board.update(outcome)
+        currPlayer.update(outcome)
 
-            OutcomeType.MULTISTRIKE -> {
-                board.multiStrike()
-                currPlayer.increasePoint(2)
-            }
-
-            OutcomeType.REDSTRIKE -> {
-                board.redStrike()
-                currPlayer.increasePoint(3)
-            }
-
-            OutcomeType.STRIKERSTRIKE -> {
-                currPlayer.decreasePointByOne()
-                currPlayer.increaseFoul()
-            }
-
-            OutcomeType.DEFUNCTCOIN -> {
-                board.defunctCoin(CoinType.BLACK)
-                currPlayer.decreasePoint(2)
-                currPlayer.increaseFoul()
-            }
-        }
-
-        checkIfFoulLimitExceeded(currPlayer)
         changeStatusIfConcluded()
 
         currPlayerIndex = (currPlayerIndex + 1) % players.size
@@ -53,12 +27,6 @@ class Game(private val board: Board, private val players: List<Player>) {
         }
     }
 
-    private fun checkIfFoulLimitExceeded(currPlayer: Player) {
-        if (currPlayer.getFouls() == 3) {
-            currPlayer.decreasePointByOne()
-            currPlayer.resetNumberOfFoulToZero()
-        }
-    }
 
     fun getStatus(): GameStatusType {
         return status

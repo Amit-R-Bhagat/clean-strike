@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f4105c40-ea3d-49a6-a435-63a04ea41218" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/Board.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/Game.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/GameStatusType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/GameStatusType.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/OutcomeType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/OutcomeType.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/Player.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/BoardTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/BoardTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/PlayerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/PlayerTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +77,7 @@
       <recent name="service" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.BoardTest.should throw error if outcome cannot be played">
+  <component name="RunManager" selected="Gradle.Tests in 'CleanStrike.test'">
     <configuration name="BoardServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -191,8 +193,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.BoardTest.should throw error if outcome cannot be played" />
         <item itemvalue="Gradle.Tests in 'CleanStrike.test'" />
+        <item itemvalue="Gradle.BoardTest.should throw error if outcome cannot be played" />
         <item itemvalue="Gradle.GameTest.game is draw if no player has atleast five points and lead by atleast three points to any other player and no coins" />
         <item itemvalue="Gradle.GameTest.game is won if a player has atleast five points and lead by atleast three points to any other player" />
         <item itemvalue="Gradle.BoardServiceTest" />

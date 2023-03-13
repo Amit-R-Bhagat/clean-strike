@@ -1,6 +1,6 @@
 import exception.NotEnoughCoinsException
 import model.Board
-import model.CoinType
+import model.OutcomeType
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -20,10 +20,10 @@ class BoardTest {
     }
 
     @Test
-    fun `should decrease black coin count by one on multiStrike`() {
+    fun `should decrease black coin count by one on strike`() {
         val board = Board(9, 1, 1)
 
-        board.strike()
+        board.update(OutcomeType.STRIKE)
 
         assertEquals(8, board.getNumberOfBlackCoins())
     }
@@ -32,7 +32,7 @@ class BoardTest {
     fun `should decrease black coin count by two on multiStrike`() {
         val board = Board(9, 1, 1)
 
-        board.multiStrike()
+        board.update(OutcomeType.MULTISTRIKE)
 
         assertEquals(7, board.getNumberOfBlackCoins())
     }
@@ -41,7 +41,7 @@ class BoardTest {
     fun `should decrease red coin count by one on redStrike`() {
         val board = Board(9, 1, 1)
 
-        board.redStrike()
+        board.update(OutcomeType.REDSTRIKE)
 
         assertEquals(0, board.getNumberOfRedCoins())
     }
@@ -50,7 +50,7 @@ class BoardTest {
     fun `should remove a coin from play on defunct coin`() {
         val board = Board(9, 1, 1)
 
-        board.defunctCoin(CoinType.BLACK)
+        board.update(OutcomeType.DEFUNCTCOIN)
 
         assertEquals(8, board.getNumberOfBlackCoins())
     }
@@ -58,9 +58,9 @@ class BoardTest {
     @Test
     fun `should throw error if outcome cannot be played`() {
         val board = Board(9, 1, 1)
-        board.redStrike()
+        board.update(OutcomeType.REDSTRIKE)
 
-        assertFailsWith<NotEnoughCoinsException> { board.redStrike() }
+        assertFailsWith<NotEnoughCoinsException> { board.update(OutcomeType.REDSTRIKE) }
     }
 
 }

@@ -5,5 +5,6 @@ enum class OutcomeType {
     MULTISTRIKE,
     REDSTRIKE,
     STRIKERSTRIKE,
-    DEFUNCTCOIN
+    DEFUNCTCOIN,
+    NONE
 }

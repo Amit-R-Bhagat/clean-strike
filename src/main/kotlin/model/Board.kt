@@ -12,28 +12,38 @@ class Board(private var numberOfBlackCoins: Int, private var numberOfRedCoins: I
         return numberOfRedCoins
     }
 
-    fun strike() {
+    private fun strike() {
         if(numberOfBlackCoins==0) throw NotEnoughCoinsException()
         numberOfBlackCoins -= 1
     }
 
-    fun multiStrike() {
+    private fun multiStrike() {
         if(numberOfBlackCoins==0) throw NotEnoughCoinsException()
         numberOfBlackCoins -= 2
     }
 
-    fun redStrike() {
+    private fun redStrike() {
         if(numberOfRedCoins==0) throw NotEnoughCoinsException()
         numberOfRedCoins -= 1
     }
 
-    fun defunctCoin(coinType: CoinType) {
+    private fun defunctCoin(coinType: CoinType) {
         if(coinType == CoinType.BLACK){
             if(numberOfBlackCoins==0) throw NotEnoughCoinsException()
             numberOfBlackCoins -= 1
         }else {
             if(numberOfRedCoins==0) throw NotEnoughCoinsException()
             numberOfRedCoins -= 1
+        }
+    }
+
+    fun update(outcome: OutcomeType){
+        when(outcome){
+            OutcomeType.STRIKE -> strike()
+            OutcomeType.MULTISTRIKE -> multiStrike()
+            OutcomeType.REDSTRIKE -> redStrike()
+            OutcomeType.DEFUNCTCOIN -> defunctCoin(CoinType.BLACK)
+            else -> {}
         }
     }
 }
